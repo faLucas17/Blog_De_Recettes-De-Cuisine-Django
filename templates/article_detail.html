@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.titre }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5" style="background-color: whitesmoke;">
+    <h1>{{ article.titre }}</h1>
+    <img src="{{ article.image.url }}" alt="{{ article.titre }}" style="width: 25%; height: auto; object-fit: cover;">
+    <p style="font-weight: bold; font-style: italic;">{{ article.contenu }}</p> 
+    <a href="{% url 'article-list' %}" class="btn btn-secondary">Retourner</a>  
+    <a href="" class="btn btn-primary">Acheter</a> 
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

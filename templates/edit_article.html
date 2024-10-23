@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier l'Article</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap pour le style -->
+    <style>
+        /* Styles supplémentaires pour le formulaire */
+        .form-container {
+            background-color: #f8f9fa; /* Couleur de fond pour le formulaire */
+            border-radius: 8px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne ajusté */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le formulaire */
+            max-width: 500px; /* Limiter la largeur du formulaire */
+            margin: auto; /* Centrer le formulaire */
+            border: 2px solid rgb(239, 17, 239); /* Bordure de couleur purple */
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between; /* Espace entre les boutons */
+        }
+
+        /* Réduire la taille des éléments de formulaire si nécessaire */
+        input, textarea, select {
+            max-width: 100%; /* Limite la largeur des éléments de formulaire */
+        }
+    </style>
+</head>
+<body>
+    <div class="container " style="font-weight: bold; background-color: whitesmoke">
+        <h2 class="text-center" style=" font-style: italic;">Modifier l'Article : {{ article.titre }}</h2>
+        <div class="form-container"> <!-- Limiter la largeur du formulaire -->
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.as_p }}  <!-- Affiche les champs du formulaire pré-remplis -->
+                <div class="btn-container mt-3">
+                    <button type="submit" class="btn btn-primary" style="font-weight: bold; font-style: italic;">Enregistrer</button>
+                    <a href="{% url 'useradmin' %}" class="btn btn-warning" style="font-weight: bold; font-style: italic;">Retourner</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
