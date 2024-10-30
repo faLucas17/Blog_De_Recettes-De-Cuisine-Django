@@ -4,70 +4,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-      <!-- Lien vers la bibliothèque Font Awesome -->
+    <!-- Lien vers la bibliothèque Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Charger les fichiers statiques -->
     {% load static %}
-    
-    <!-- Inclusion de ton fichier CSS personnalisé -->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+       
+        body {
+            background-color: #8B6F5D; /* 50% de transparence */ /* Beige sombre */
+        }
+        /* Style de la barre de navigation */
+        .navbar-nav .nav-link {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff8c00;
+        }
+        .navbar-nav .center-link {
+            font-size: 1.5rem;
+            color: #ff8c00;
+        }
+        /* Pour éviter le chevauchement avec le contenu en haut */
+        .content {
+            padding-top: 100px;
+        }
+        /* Style pour la section des articles */
+        .articles-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .articles-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        /* Masquer les titres et les boutons par défaut */
+    .service-item .service-title,
+    .service-item .service-btn {
+        display: none;
+    }
+
+    /* Afficher les titres et les boutons lors du survol */
+    .service-item:hover .service-title,
+    .service-item:hover .service-btn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    /* Style pour la mise en forme de chaque service */
+    .service-item {
+        position: relative;
+    }
+
+    /* Assombrir l'image ou la vidéo lors du survol */
+    .service-item:hover img,
+    .service-item:hover video {
+        filter: brightness(50%);
+    }
+    /* Uniformiser les images et les vidéos dans les services */
+    .service-item img, .service-item video {
+        width: 100%;
+        height: 350px; /* Ajustez cette valeur pour la hauteur souhaitée */
+        object-fit: cover; /* Pour que l'image remplisse le conteneur sans déformation */
+    }
+
+    /* Espacement entre les services */
+    .service-item {
+        margin-bottom: 20px;
+    }
+    .service-item {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-item video {
+        transition: filter 0.3s ease;
+    }
+    
+    /* Assombrir la vidéo et afficher la superposition au survol */
+    .service-item:hover video {
+        filter: brightness(50%);
+    }
+    
+    .service-item .overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .service-item:hover .overlay {
+        opacity: 1;
+    }
+    </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg">
+  <!-- Navbar avec fixed-top pour rester en haut de l'écran lors du défilement -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-        <a style="font-weight: bold;" class="navbar-brand" href="#">SENE MARCHE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <form style="margin-top: -10px; text-align: left; left: 50%; bottom: 20%; font-weight: bold;">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+            <button class="btn" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+            <input class="form-control me-2" type="search" placeholder="Rechercher des recettes ici" aria-label="Search">
+        </form>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">À propos</a>
+                    <a class="nav-link" href="#">À propos</a>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" href="#">Contact</a>
-                </li>
-                <!-- Réseaux sociaux -->
-                <li class="nav-item">
-                    <a href="https://www.facebook.com" target="_blank" class="nav-link "><i class="fab fa-facebook-f"></i></a>
+                    <a class="nav-link" href="#">Recettes</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://www.twitter.com" target="_blank" class="nav-link "><i class="fab fa-twitter"></i></a>
+                    <a class="nav-link" href="#">Vidéos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://wa.me/123456789" target="_blank" class="nav-link "><i class="fab fa-whatsapp"></i></a>
+                    <a class="nav-link center-link" href="/">Fatou Fall</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Livre de cuisine</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Presse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-            <a href="#" class="nav-link"><i class="fas fa-user"></i></a>
         </div>
-      </form>
     </div>
-</nav>
+  </nav>
 
-
-
-      <!-- Inclusion d' un héros section -->
+  <div class="content">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'images/shop.jpg' %}" class="d-block w-100" style="object-fit: cover; height: 75vh;" alt="...">
-                <div class="carousel-caption" style="text-align: left; left: 5%; bottom: 20%;">
-                    <h5 style="font-size: 3rem; color: #fff; font-style: italic; font-weight: bold; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">Sene Marché, où la qualité <br> rencontre le choix</h5><br>
-                    <p style="font-size: 1.5rem; color: #fff;font-style: italic;  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">Rejoignez la communauté de Sene Marché<br>
-                    Ensemble, faisons de chaque achat une expérience réussie.</p>
-                    <button type="button" class="btn btn-outline-warning" onclick="window.location.href='{% url 'article-list' %}'">Parcourez nos nouveautés</button>
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <video autoplay muted loop class="d-block w-100" style="object-fit: cover; height: 100vh;">
+                      <source src="{% static 'videos/shop.mp4' %}" type="video/mp4">
+                  </video>
+                  <div class="carousel-caption" style="text-align: center; left: 50%; bottom: 25%; transform: translateX(-50%);">
+                      <p class="subtitle" style="font-size: 1.2rem; color: #fff; font-style: italic; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">CONSEIL EN NUTRITION CULINAIRE</p>
+                      <h1 class="title" style="font-size: 2.5rem; font-family: 'Pacifico', cursive; color: white; font-weight: bold; text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); letter-spacing: 2px;">
+                          Rendre les aliments sains et délicieux
+                      </h1>
+                      <a href="#services" class="btn btn-outline-warning" style="font-size: 1.2rem; font-family: 'Pacifico', cursive; padding: 0.5rem 1rem; margin-top: 1rem;">
+                        Explorer...  >
+                    </a>
+                  </div>
+              </div>  
+          </div>
+      </div>
 
-                </div>
-            </div>
+      <!-- Section des services -->
+<div class="services-section" id="services">
+    <h2 class="services-title" style="font-family: 'Pacifico', cursive; font-size: 2rem; color: #333; margin-bottom: 20px; text-align: center;">Services</h2> 
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <!-- Service 1 -->
+<div class="col-md-4 text-center service-item">
+    <img src="{% static 'images/service1.jpg' %}" class="img-fluid" alt="Plan de repas">
+    <!-- Title positioned above the button -->
+    <h3 class="service-title" style="font-size: 1.5rem; font-family: 'Pacifico', cursive; color: whitesmoke; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+        Plans de repas
+    </h3>
+    <a href="#" class="btn btn-outline-warning service-btn" style="font-size: 1.2rem; font-family: 'Pacifico', cursive; padding: 0.5rem 1rem; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">
+        En savoir plus >
+    </a>
+</div>
+
+            <!-- Service 2 -->
+<div class="col-md-4 text-center service-item" style="position: relative;">
+    <!-- Vidéo en arrière-plan -->
+    <video autoplay muted loop class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+        <source src="{% static 'videos/service2.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Superposition avec le titre et le bouton -->
+    <div class="overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: whitesmoke; text-align: center;">
+        <h2 class="articles-title" style="font-size: 1.5rem; font-family: 'Pacifico', cursive;">Liste des articles</h2>
+        <a href="{% url 'article-list' %}" class="btn btn-outline-warning" style="font-size: 1.2rem; font-family: 'Pacifico', cursive; padding: 0.5rem 1rem;">
+            Voir tous les articles
+        </a>
+    </div>
+</div>
+
+            <!-- Service 3 -->
+<div class="col-md-4 text-center service-item">
+    <img src="{% static 'images/service3.avif' %}" class="img-fluid" alt="Ateliers de cuisine">
+    <!-- Title positioned above the button -->
+    <h3 class="service-title" style="font-size: 1.5rem; font-family: 'Pacifico', cursive; color: whitesmoke; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+        Ateliers de cuisine
+    </h3>
+    <a href="#" class="btn btn-outline-warning service-btn" style="font-size: 1.2rem; font-family: 'Pacifico', cursive; padding: 0.5rem 1rem; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">
+        En savoir plus >
+    </a>
+</div>
         </div>
     </div>
-    
+</div>
 
-    <h6> ©FaVazquez@2024 Sene Marché - Tous droits réservés | Blog Commercial</h6>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </div>
+
+  <!-- Pied de page -->
+  <footer><h6 style="font-family: 'Pacifico', cursive;">©fatoufall@2024 conseillère en cuisine - Tous droits réservés | Blog Commercial</h6></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-

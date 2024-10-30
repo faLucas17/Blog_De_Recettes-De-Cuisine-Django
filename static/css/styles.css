@@ -76,7 +76,7 @@ h6 {
 }
 /* Changement de couleur au survol des icônes */
 .navbar-nav .nav-link:hover {
-    background-color: rgba(231, 117, 117, 0.925); /* Fond léger au survol (facultatif) */
+    background-color: whitesmoke; /* Fond léger au survol (facultatif) */
     /*background-color: rgba(110, 110, 110, 0.925);*/
 }
 
@@ -142,4 +142,94 @@ resize: none; /* Empêche le redimensionnement manuel */
 }
  /*formulaire modifier article*/
  
- 
+ body {
+    background-color: #8B6F5D; /* 50% de transparence */ /* Beige sombre */
+}
+/* Style de la barre de navigation */
+.navbar-nav .nav-link {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.2rem;
+    color: #333;
+}
+.navbar-nav .nav-link:hover {
+    color: #ff8c00;
+}
+.navbar-nav .center-link {
+    font-size: 1.5rem;
+    color: #ff8c00;
+}
+/* Pour éviter le chevauchement avec le contenu en haut */
+.content {
+    padding-top: 100px;
+}
+/* Style pour la section des articles */
+.articles-section {
+    padding: 60px 0;
+    text-align: center;
+}
+.articles-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+/* Masquer les titres et les boutons par défaut */
+.service-item .service-title,
+.service-item .service-btn {
+display: none;
+}
+
+/* Afficher les titres et les boutons lors du survol */
+.service-item:hover .service-title,
+.service-item:hover .service-btn {
+display: block;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 2;
+}
+
+/* Style pour la mise en forme de chaque service */
+.service-item {
+position: relative;
+}
+
+/* Assombrir l'image ou la vidéo lors du survol */
+.service-item:hover img,
+.service-item:hover video {
+filter: brightness(50%);
+}
+/* Uniformiser les images et les vidéos dans les services */
+.service-item img, .service-item video {
+width: 100%;
+height: 350px; /* Ajustez cette valeur pour la hauteur souhaitée */
+object-fit: cover; /* Pour que l'image remplisse le conteneur sans déformation */
+}
+
+/* Espacement entre les services */
+.service-item {
+margin-bottom: 20px;
+}
+.service-item {
+position: relative;
+overflow: hidden;
+}
+
+.service-item video {
+transition: filter 0.3s ease;
+}
+
+/* Assombrir la vidéo et afficher la superposition au survol */
+.service-item:hover video {
+filter: brightness(50%);
+}
+
+.service-item .overlay {
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.service-item:hover .overlay {
+opacity: 1;
+}
