@@ -8,6 +8,6 @@ class ArticleForm(forms.ModelForm):
         fields = ['titre', 'resume', 'contenu', 'image'] #les champs à inclure dans le formulaire
         widgets = {
             'titre': forms.TextInput(attrs={'class':'form-control'}),
-            'resume': forms.TextInput(attrs={'class':'form-control'}),
+            'resume': forms.Textarea(attrs={'class':'form-control', 'style': 'height: 100px; resize: none;'}),
             'contenu': forms.Textarea(attrs={'class':'form-control', 'style': 'height: 100px; resize: none;'}),
         }

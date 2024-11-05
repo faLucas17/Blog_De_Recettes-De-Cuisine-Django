@@ -5,17 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ article.titre }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <style>
+        body {
+            background-color: whitesmoke;
+            font-family: 'Pacifico', cursive;
+        }
+        .navbar-nav .nav-link {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff8c00;
+        }
+        .navbar-nav .center-link {
+            font-size: 1.5rem;
+            color: #ff8c00;
+        }
+        .content {
+            padding-top: 100px;
+        }
+        .articles-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .recipe-section {
+            padding: 60px 0;
+            text-align: left;
+            background-color: whitesmoke;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .recipe-section h1 {
+            margin-bottom: 30px;
+        }
+        .ingredients, .instructions {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .ingredients h2, .instructions h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .recipe-image {
+            width: 25%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 20px;
+            float: left; /* Aligne l'image à gauche */
+            margin-right: 20px; /* Ajoute un espace à droite de l'image */
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8B6F5D;">
+        <div class="container-fluid">
+            <form class="d-flex" role="search">
+                <button class="btn" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+                <input class="form-control me-2" type="search" placeholder="Rechercher des recettes ici" aria-label="Search">
+            </form>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recettes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vidéos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link center-link" href="/">Fatou Fall</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Livre de cuisine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Presse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<div class="container mt-5" style="background-color: whitesmoke;">
-    <h1>{{ article.titre }}</h1>
-    <img src="{{ article.image.url }}" alt="{{ article.titre }}" style="width: 25%; height: auto; object-fit: cover;">
-    <p style="font-weight: bold; font-style: italic;">{{ article.contenu }}</p> 
-    <a href="{% url 'article-list' %}" class="btn btn-secondary">Retourner</a>  
-    <a href="" class="btn btn-primary">Acheter</a> 
-</div>
+    <div class="container mt-5 recipe-section">
+        <h1>{{ article.titre }}</h1>
+        <img src="{{ article.image.url }}" alt="{{ article.titre }}" class="recipe-image">
+        
+        <div class="row">
+            <div class="col-md-6 ingredients">
+                <h2 style="text-decoration: underline; font-family: area;">Ingrédients :</h2>
+                <p  style="font-family: area; white-space: pre-line;">{{ article.resume }}</p>
+            </div>
+            <div class="col-md-6 instructions">
+                <h2 style="text-decoration: underline; font-family: area;" >Instructions :</h2>
+                <p style="font-family: area; white-space: pre-line;">{{ article.contenu }}</p>
+            </div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <a href="{% url 'article-list' %}" class="btn btn-warning mt-4">Retourner</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

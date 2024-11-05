@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier l'Article</title>
+    <title>Modifier la recette</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap pour le style -->
     <style>
         /* Styles supplémentaires pour le formulaire */
@@ -30,7 +30,7 @@
 </head>
 <body>
     <div class="container " style="font-weight: bold; background-color: whitesmoke">
-        <h2 class="text-center" style=" font-style: italic;">Modifier l'Article : {{ article.titre }}</h2>
+        <h2 class="text-center" style=" font-style: italic;">Modifier la recette : {{ article.titre }}</h2>
         <div class="form-container"> <!-- Limiter la largeur du formulaire -->
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
