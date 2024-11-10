@@ -4,6 +4,9 @@ from articles.models import Article
 
 from articles.forms import ArticleForm  # Assure-toi d'importer ton formulaire
 
+from django.core.mail import send_mail
+from django.contrib import messages
+
 # Create your views here.
 def home(request):
     message= Article.objects.all()
@@ -51,3 +54,38 @@ def article_list_view(request):
 def article_detail_view(request, id):
     article = get_object_or_404(Article, id=id)  # Récupère l'article par ID
     return render(request, 'article_detail.html', {'article': article})  # Passe l'article au template
+
+def apropos(request):
+    return render(request, 'apropos.html')
+
+def recettes(request):
+    return render(request, 'recettes.html')
+
+def videos(request):
+    return render(request, 'videos.html')
+
+def livreDeCuisine(request):
+    return render(request, 'livreDeCuisine.html')
+
+def contact(request):
+    if request.method == 'POST':
+        nom = request.POST.get('nom')
+        email = request.POST.get('email')
+        objet = request.POST.get('objet')
+        
+        # Envoyer l'e-mail
+        try:
+            send_mail(
+                subject=f"Contact Form: {objet}",
+                message=f"Nom: {nom}\nEmail: {email}\nObjet: {objet}",
+                from_email='votre-email@gmail.com',  # Remplacez par votre adresse Gmail
+                recipient_list=['ffmaman17@gmail.com'],  # L'adresse où vous souhaitez recevoir l'e-mail
+                fail_silently=False,
+            )
+            messages.success(request, 'Votre message a été envoyé avec succès.')
+        except Exception as e:
+            messages.error(request, "Erreur lors de l'envoi de l'e-mail. Veuillez réessayer.")
+        
+        return redirect('contact')
+
+    return render(request, 'contact.html')

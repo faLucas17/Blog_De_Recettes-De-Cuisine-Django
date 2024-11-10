@@ -62,46 +62,56 @@
     }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8B6F5D;">
+<body style="background-color: whitesmoke; padding-top: 60px;">
+    <!-- Formulaire de recherche en dehors de la navbar -->
+    <div class="container my-4">
+        <form class="d-flex justify-content-left " role="search">
+            <button class="btn" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Rechercher des recettes ici"
+              aria-label="Search"
+              style="max-width: 25%;"
+            />
+          </form>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8b6f5d;">
         <div class="container-fluid">
-            <form class="d-flex" role="search">
-                <button class="btn" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-                <input class="form-control me-2" type="search" placeholder="Rechercher des recettes ici" aria-label="Search">
-            </form>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">À propos</a>
+                        <a class="nav-link" href="/Apropos">À propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Recettes</a>
+                        <a class="nav-link" href="/recettes">Recettes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vidéos</a>
+                        <a class="nav-link" href="/videos">Vidéos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link center-link" href="/">Fatou Fall</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Livre de cuisine</a>
+                        <a class="nav-link" href="/livreDeCuisine">Livre de cuisine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Presse</a>
+                        <a class="nav-link" href="/useradmin">admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
+ 
 
-      <hr>
-      <hr> 
-      <hr>
+      
     <div class="container mt-5" style="font-weight: bold">
         <div class="row">
             {% for article in articles %}
